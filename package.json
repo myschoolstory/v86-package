@@ -1,8 +1,8 @@
 {
   "name": "v86",
-  "version": "0.5.64+ga07e43b",
+  "version": "0.1.0",
   "license": "BSD-2-Clause",
-  "description": "x86 PC emulator and x86-to-wasm JIT, running in the browser",
+  "description": "x86 PC emulator and x86-to-wasm JIT, running in the browser, fixed by Alex Scott",
   "homepage": "https://copy.sh/v86/",
   "files": [
     "Readme.md",
@@ -10,7 +10,9 @@
     "build/libv86*.js",
     "build/libv86*.js.map",
     "build/*.mjs",
-    "build/v86*.wasm"
+    "build/v86*.wasm",
+    "build/capstone-x86.min.js",
+    "build/libwatb.cjs"
   ],
   "main": "build/libv86.mjs",
   "repository": "github:copy/v86",
