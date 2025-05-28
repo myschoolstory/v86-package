@@ -1,8 +1,9 @@
 name: Publish Package to GitHub Packages
 
 on:
-  release:
-    types: [created]
+  push:  # Triggers on every commit to any branch
+    branches:
+      - '**'
 
 jobs:
   build:
@@ -12,7 +13,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - run: npm ci
+      - run: npm install --no-package-lock  # Installs dependencies without creating a lockfile
       - run: npm test
 
   publish-gpr:
@@ -27,7 +28,7 @@ jobs:
         with:
           node-version: 20
           registry-url: https://npm.pkg.github.com/
-      - run: npm ci
+      - run: npm install --no-package-lock
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.REGISTRY_TOKEN }}
