@@ -1,23 +1,12 @@
 name: Publish Package to GitHub Packages
 
 on:
-  push:  # Triggers on every commit to any branch
+  push:
     branches:
       - '**'
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-      - run: npm install --no-package-lock  # Installs dependencies without creating a lockfile
-      - run: npm test
-
-  publish-gpr:
-    needs: build
+  build-and-publish:
     runs-on: ubuntu-latest
     permissions:
       packages: write
